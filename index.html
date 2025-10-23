@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gabrielly</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Gabrielly Monteiro</h1>
+        <p class="tagline">Trainee em Gestão de TI • Front-end em aprendizado</p>
+      </div>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#projects">Projetos</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main" class="site-main">
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Olá, eu sou a Gabrielly!</h2>
+          <p>Estudante de Gestão de TI na faculdade ENIAC. Aprendo front-end (HTML, CSS, JavaScript) e Redes no geral.</p>
+          <p class="cta-row">
+            <a class="btn" href="#projects">Ver projetos</a>
+            <a class="btn ghost" href="#contact">Contato</a>
+          </p>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+          <img src="imagem-rosto-gaby.png" alt="Eu" />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about section">
+      <div class="container">
+        <h2>Sobre</h2>
+        <p>Pode me chamar de Gaby! Eu faço estágio de TI no ENIAC. Tenho conhecimento básico em Python, C, HTML, CSS e JavaScript. Gosto de construir páginas funcionais com foco em usabilidade</p>
+
+        <div class="skills">
+          <article>
+            <h3>Habilidades</h3>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript básico</li>
+              <li>Informática no geral</li>
+            </ul>
+          </article>
+
+          <article>
+            <h3>Educação & Experiência</h3>
+            <ul>
+              <li>Gestão de TI - ENIAC (Cursando)</li>
+              <li>Jovem Aprendiz na Caixa Econômica Federal - RASC (2 anos)</li>
+              <li>Vendedora - Chilli Beans (Atualmente)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects section">
+      <div class="container">
+        <h2>Projetos</h2>
+        <p class="muted">Projetos reais ou exercícios do curso.</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Mini Bio (HTML/CSS)</h3>
+            <p>Projeto com página de apresentação pessoal, usando tags semânticas e layout responsivo (esse site é o exemplo)</p>
+            <p class="card-meta">HTML • CSS</p>
+            <a class="card-link" href="#" aria-label="Ver projeto Mini Bio">Ver</a>
+          </article>
+      </div>
+    </section>
+
+    <section id="contact" class="contact section">
+      <div class="container narrow">
+        <h2>Contato</h2>
+        <p>Se quiser falar comigo, envie uma mensagem:</p>
+        <p>E-mail: gabimonteiro059@gmail.com</p>
+        <p>Celular: (11) 96874-4398</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Gabrielly Monteiro — Portfólio</p>
+      <ul class="socials" aria-label="Redes sociais">
+        <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button id="toTop" class="to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
