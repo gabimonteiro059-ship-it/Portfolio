@@ -103,6 +103,50 @@
         <p>Celular: (11) 96874-4398</p>
       </div>
     </section>
+
+    <section id="feedback" class="feedback section">
+  <div class="container narrow">
+    <h2>Pesquisa de Acesso</h2>
+    <p>Gostaria de saber sua opinião! Responda algumas perguntas rápidas sobre o site 👇</p>
+
+    <form id="feedbackForm" action="https://formspree.io/f/xldorddl" method="POST">
+      <div class="form-row">
+        <label for="name">Nome</label>
+        <input id="name" name="name" type="text" placeholder="Seu nome" required />
+        <span class="error" id="error-name" aria-live="polite"></span>
+      </div>
+
+      <div class="form-row">
+        <label for="access">Esse site foi de fácil acesso para você?</label>
+        <select id="access" name="access" required>
+          <option value="">Selecione...</option>
+          <option value="Sim">Sim, foi fácil acessar</option>
+          <option value="Mais ou menos">Mais ou menos</option>
+          <option value="Não">Não, tive dificuldades</option>
+        </select>
+        <span class="error" id="error-access" aria-live="polite"></span>
+      </div>
+
+      <div class="form-row">
+        <label for="dificuldade">Que tipo de dificuldade você encontrou?</label>
+        <textarea id="dificuldade" name="dificuldade" rows="3" placeholder="Conte um pouco sobre o que achou difícil..."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="comentarios">Tem algo a mais para declarar?</label>
+        <textarea id="comentarios" name="comentarios" rows="3" placeholder="Deixe aqui sua opinião ou sugestão :)"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Enviar feedback</button>
+        <button type="reset" class="btn ghost">Limpar</button>
+      </div>
+
+      <div id="form-feedback" role="status" aria-live="polite" class="form-feedback"></div>
+    </form>
+  </div>
+</section>
+
   </main>
 
   <footer class="site-footer">
@@ -119,5 +163,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>
