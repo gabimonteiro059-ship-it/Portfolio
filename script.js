@@ -1,13 +1,9 @@
-// script.js
-
-// Simple DOM helpers
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-// Update copyright year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile menu toggle
+// Mobile menu
 const navToggle = document.querySelector('.nav-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 if(navToggle){
@@ -22,7 +18,6 @@ if(navToggle){
   });
 }
 
-// Back to top button
 const toTop = document.getElementById('toTop');
 window.addEventListener('scroll', () => {
   if(window.scrollY > 300){
@@ -33,7 +28,6 @@ window.addEventListener('scroll', () => {
 });
 toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-// Smoothly close mobile menu on link click
 document.querySelectorAll('#mobile-menu a, .main-nav a').forEach(a => {
   a.addEventListener('click', () => {
     if(!mobileMenu) return;
@@ -42,60 +36,64 @@ document.querySelectorAll('#mobile-menu a, .main-nav a').forEach(a => {
   });
 });
 
-// Contact form validation (client-side)
-const contactForm = document.getElementById('contactForm');
-if(contactForm){
-  contactForm.addEventListener('submit', (e) => {
+// Feedback
+const feedbackForm = document.getElementById('feedbackForm');
+if(feedbackForm){
+  feedbackForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     clearErrors();
 
-    const name = $('#name').value.trim();
-    const email = $('#email').value.trim();
-    const message = $('#message').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const access = document.getElementById('access').value;
+    const errorName = document.getElementById('error-name');
+    const feedbackMsg = document.getElementById('form-feedback');
 
     let valid = true;
 
     if(name.length < 2){
-      showError('name', 'Insira seu nome completo.');
+      errorName.textContent("Por favor, insira seu nome.");
       valid = false;
     }
 
-    if(!validateEmail(email)){
-      showError('email', 'Insira um e-mail válido.');
+    if(!access){
+      errorAccess.textContent("Selecione uma opção.");
       valid = false;
     }
 
-    if(message.length < 6){
-      showError('message', 'A mensagem é muito curta.');
-      valid = false;
+    if(!valid){
+      feedbackMsg.style.color = "red";
+      feedbackMsg.textContent = "Por favor, corrija os erros acima.";
+      return;
     }
 
-    if(!valid) return;
+    const formData = new FormData(feedbackForm);
+    feedbackMsg.style.color = "black";
+    feedbackMsg.textContent = "Enviando..."
 
-    // Simular envio (substitua por integração real: e-mail, Netlify Forms, API)
-    const feedback = $('#form-feedback');
-    feedback.style.color = 'green';
-    feedback.textContent = 'Mensagem enviada com sucesso! Obrigada pelo contato. (isso é uma simulação)';
-    contactForm.reset();
+    try {
+      const response = await fetch(feedbackForm.action, {
+        method: feedbackForm.method,
+        body: formData,
+        headers: {Accept: "application/json"},
+      });
 
-    // Opcional: remover mensagem após alguns segundos
-    setTimeout(()=> feedback.textContent = '', 6000);
+      if (response.ok) {
+        feedbackMsg.style.color = "green";
+        feedbackMsg.textContent = "Feedback enviado com sucesso!";
+        feedbackForm.reset();
+      } else {
+        feedbackMsg.style.color = "red";
+        feedbackMsg.textContent = "Ops, algo deu errado no envio. Tente novamente mais tarde.";
+      }
+    } catch (error) {
+      feedbackMsg.style.color = "red";
+      feedbackMsg.textContent = "Erro de conexão. Verifique sua internet e tente novamente.";
+    }
   });
 }
 
-function showError(field, msg){
-  const el = document.getElementById('error-' + field);
-  if(el) el.textContent = msg;
-}
-
-function clearErrors(){
-  $$('.error').forEach(e => e.textContent = '');
-  const fb = $('#form-feedback');
-  if(fb) fb.textContent = '';
-}
-
-function validateEmail(email){
-  // simples regex para e-mail
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email.toLowerCase());
+function clearErrors() {
+  document.querySelectorAll(".error").forEach((e) => (e.textContent = " "));
+  const feedbackMsg = document.getElementById("form-feedback");
+  if (feedbackMsg) feedbackMsg.textContent = " ";
 }
